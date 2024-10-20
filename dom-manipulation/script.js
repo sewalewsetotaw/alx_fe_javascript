@@ -1,4 +1,4 @@
-// Array to store quote objects
+const serverUrl = 'https://jsonplaceholder.typicode.com/posts'; // Simulating the server endpoint
 let quotes = [
     { text: "The only way to do great work is to love what you do.", category: "Inspiration" },
     { text: "Life is what happens when you're busy making other plans.", category: "Life" },
@@ -21,6 +21,56 @@ function loadQuotesFromLocalStorage() {
 function saveQuotesToLocalStorage() {
     localStorage.setItem('quotes', JSON.stringify(quotes));
     localStorage.setItem('selectedCategory', document.getElementById("categoryFilter").value);
+}
+
+// Function to fetch quotes from the server
+async function fetchQuotesFromServer() {
+    try {
+        const response = await fetch(serverUrl);
+        const serverQuotes = await response.json();
+        handleSync(serverQuotes); // Sync local and server quotes
+    } catch (error) {
+        console.error("Error fetching quotes from the server:", error);
+    }
+}
+
+// Function to post new quotes to the server (simulated)
+async function postQuoteToServer(newQuote) {
+    try {
+        await fetch(serverUrl, {
+            method: 'POST',
+            body: JSON.stringify(newQuote),
+            headers: { 'Content-Type': 'application/json' }
+        });
+    } catch (error) {
+        console.error("Error posting quote to the server:", error);
+    }
+}
+
+// Function to handle synchronization between local and server data
+function handleSync(serverQuotes) {
+    let localQuotes = JSON.parse(localStorage.getItem('quotes')) || quotes;
+    
+    let conflicts = [];
+    
+    serverQuotes.forEach(serverQuote => {
+        const conflict = localQuotes.find(localQuote => localQuote.text === serverQuote.title && localQuote.category !== serverQuote.body);
+        if (conflict) {
+            conflicts.push(conflict);
+        } else if (!localQuotes.some(localQuote => localQuote.text === serverQuote.title)) {
+            localQuotes.push({ text: serverQuote.title, category: serverQuote.body });  // Add new server quotes to local storage
+        }
+    });
+
+    if (conflicts.length > 0) {
+        alert(`Conflicts found with the server data! Server data takes precedence.`);
+        conflicts.forEach(conflict => {
+            console.log("Conflict:", conflict);  // Optionally log conflicts for debugging
+        });
+    }
+
+    quotes = localQuotes;
+    localStorage.setItem('quotes', JSON.stringify(quotes)); // Sync the local storage with merged data
 }
 
 // Function to display a random quote based on the selected category
@@ -68,16 +118,25 @@ function populateCategories() {
     });
 }
 
-// Function to add a new quote and update the category filter
+// Function to sync periodically with the server
+function startSyncInterval() {
+    setInterval(fetchQuotesFromServer, 10000);  // Fetch from the server every 10 seconds
+}
+
+// Function to add a new quote and sync it to the server
 function addQuote() {
     const newQuoteText = document.getElementById("newQuoteText").value;
     const newQuoteCategory = document.getElementById("newQuoteCategory").value;
+
     if (newQuoteText && newQuoteCategory) {
-        quotes.push({ text: newQuoteText, category: newQuoteCategory });
-        saveQuotesToLocalStorage();  // Save after adding the new quote
-        populateCategories();  // Update the dropdown with new categories
-        document.getElementById("newQuoteText").value = "";  // Clear the input
-        document.getElementById("newQuoteCategory").value = "";  // Clear the input
+        const newQuote = { text: newQuoteText, category: newQuoteCategory };
+
+        quotes.push(newQuote);  // Add locally
+        localStorage.setItem('quotes', JSON.stringify(quotes));  // Save locally
+
+        postQuoteToServer(newQuote);  // Sync the new quote to the server
+        populateCategories();  // Update the category filter
+        alert("Quote added and synced to the server!");
     } else {
         alert("Please enter both quote text and category.");
     }
@@ -124,3 +183,4 @@ loadQuotesFromLocalStorage();  // Load any stored quotes and selected filter
 populateCategories();  // Populate the category filter dropdown
 createAddQuoteForm();  // Create form to add new quotes
 showRandomQuote();  // Show a random quote when the page loads
+startSyncInterval();  // Start syncing with the server
