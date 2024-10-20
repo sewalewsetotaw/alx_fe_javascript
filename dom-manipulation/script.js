@@ -149,10 +149,39 @@ async function postQuoteToServer(newQuote) {
         console.error("Error posting quote to the server:", error);
     }
 }
+// Function to export quotes to JSON file
+function exportToJsonFile () {
+    const jsonQuotes = JSON.stringify(quotes, null, 2);  // Convert quotes array to JSON string with indentation
+    const blob = new Blob([jsonQuotes], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
 
+    // Create a download link for the JSON file
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "quotes.json";
+    link.click();
+    
+    // Revoke the object URL after download
+    URL.revokeObjectURL(url);
+}
+
+// Function to import quotes from a JSON file
+function importFromJsonFile(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const importedQuotes = JSON.parse(e.target.result);
+            quotes = [...quotes, ...importedQuotes];  // Add imported quotes to the existing array
+            saveQuotesToLocalStorage();  // Save updated quotes to local storage
+            showRandomQuote();  // Optionally display a quote to show the import worked
+        };
+        reader.readAsText(file);
+    }
+}
 // Event listeners for buttons
 document.getElementById('newQuote').addEventListener('click', showRandomQuote);
-document.getElementById('exportQuotes').addEventListener('click', exportToJsonFile);
+document.getElementById('exportQuotes').addEventListener('click', exportToJsonFile );
 
 // Initialize the app
 loadQuotesFromLocalStorage();
