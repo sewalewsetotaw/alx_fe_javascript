@@ -1,0 +1,357 @@
+
+{
+   "events" : [ {
+      "name" : "EventAllChannels749",
+      "description" : "To create an event with All channels",
+      "eventSms" : [ {
+         "smsName" : "EventAllSMSTest",
+         "smsContent" : "Dear ##First Name## Your Salary of Rs. ##version## is credited in to your account."
+      } ],
+      "eventVoiceSms" : [ {
+         "smsName" : "EventAllSMSTest",
+         "smsContent" : "Voice SMS Content"
+      } ],
+      "eventMails" : [ {
+         "mailName" : "EventAllEmailTest",
+         "mailSubject" : "EventAllSubject",
+         "mailContent" : "Dear ##Last Name## Your Mail ID ##Email## is registered to the ##Application##",
+         "contentType" : "text/html",
+         "senderMailId" : "kmstest@gmail.com",
+         "senderMailName" : "KMS Event Mail Sender"
+      } ],
+      "eventPushes" : [ {
+         "messageName" : "EventAllPushTest",
+         "message" : "Dear user ##Email## your app is Upgraded to version ##bank balance##  .",
+         "richContent" : "<h1>Hello</h1>",
+         "appId" : "AppForAll1",
+         "platformSpecificProps" : {
+            "iphone" : {
+               "badge" : 1,
+               "sound" : "sound.mp4",
+               "actionLocKey" : "actionkey",
+               "locKey" : "lockey",
+               "locArgs" : {
+                  "locArg" : [ "locArg" ]
+               },
+               "launchImage" : "launchImage",
+               "title" : "title",
+               "titleLocKey" : "titleLocKey",
+               "titleLocArgs" : {
+                  "titleLocArg" : [ "titleLocArg" ]
+               },
+               "customData" : {
+                  "key" : [ {
+                     "content" : "value",
+                     "name" : "cust"
+                  } ]
+               }
+            },
+            
+            "android" : {
+               "sound" : "d.wav",
+               "icon" : "flipkart",
+               "color" : "#ffeegg",
+               "clickAction" : "clickActKey",
+               "bodyLocKey" : "bodyLocKey",
+               "priority" : "HIGH",
+               "delayWhileIdle" : "TRUE",
+               "bodyLocArgs" : {
+                  "bodyLocArg" : [ "bodyLocArgs1", "bodyLocArgs2" ]
+               },
+               "titleLocKey" : "titleLocKey",
+               "titleLocArgs" : {
+                  "titleLocArg" : [ "titleLocArgs" ]
+               },
+               "key" : [ {
+                  "name" : "gcmKey1",
+                  "value" : "gcmValue1"
+               }, {
+                  "name" : "gcmKey2",
+                  "value" : "gcmValue2"
+               } ]
+            },
+            "jpush" : {
+               "key" : [ {
+                  "name" : "title",
+                  "value" : "Message Title Comes"
+               }, {
+                  "name" : "jPushKey1",
+                  "value" : "jPushValue1"
+               }, {
+                  "name" : "jPushKey2",
+                  "value" : "jPushValue2"
+               } ]
+            },
+            "web" : {
+               "icon" : "flipkart",
+               "clickAction" : "clickActKey",
+               "key" : [ {
+                  "name" : "fcmKey1",
+                  "value" : "fcmValue1"
+               } ]
+            },
+            "windows" : {
+               "notificationType" : "TILE",
+               "title" : "New Message",
+               "badge" : 3,
+               "imagePath" : "http://background.images.com/background"
+            },
+            "wns" : {
+               "notificationType" : "TOAST",
+               "text1" : "Message Title Comes",
+               "text2" : "Body here for all messages",
+               "screenName" : "screen1.xaml",
+               "params" : {
+                  "key" : [ {
+                     "name" : "wnsKey1",
+                     "value" : "wnsValue1"
+                  }, {
+                     "name" : "wnsKey2",
+                     "value" : "wnsValue2"
+                  } ]
+               }
+            }
+         }
+      } ],
+      "eventPass" : {
+         "passName" : "BoardingPassAuto11",
+         "passType" : "BOARDING",
+         "passContent" : {
+            "basicDetails" : {
+               "passTypeIdentifier" : "pass.com.kms.passbook1",
+               "ituneIdentifiers" : "823580694",
+               "webServiceUrl" : "http://mbaastest19.konylabs.net:7001/kpns/",
+               "timezone" : "IST",
+               "passType" : "BOARDING",
+               "organizationName" : "Kony Automation",
+               "description" : "Creating Boarding Pass Template Through API",
+               "passSerialNumberType" : "AUTO_GEN"
+            },
+            "appearance" : {
+               "bgColor" : "#FFF17F",
+               "labelColor" : "#7E7100",
+               "valueColor" : "#181500",
+               "suppressStripShine" : false,
+               "images" : [ {
+                  "url" : "http://icons.iconarchive.com/icons/martz90/circle-addon2/256/plane-flight-icon.png",
+                  "blob" : false,
+                  "size" : 20376,
+                  "extension" : "png",
+                  "imageType" : "ICON"
+               }, {
+                  "url" : "http://icons.iconarchive.com/icons/martz90/circle-addon2/256/plane-flight-icon.png",
+                  "blob" : false,
+                  "size" : 20376,
+                  "extension" : "png",
+                  "imageType" : "LOGO"
+               } ]
+            },
+            "frontLayout" : {
+               "logoText" : "Brd-Auto-1",
+               "headerFields" : [ {
+                  "label" : "header1",
+                  "data" : "GATE",
+                  "displayRelatively" : false,
+                  "ignoreTimezone" : false,
+                  "key" : "header1",
+                  "dataType" : "TEXT",
+                  "alignment" : "CENTER"
+               }, {
+                  "label" : "Head2",
+                  "data" : "2header",
+                  "displayRelatively" : false,
+                  "ignoreTimezone" : false,
+                  "key" : "header2",
+                  "dataType" : "TEXT",
+                  "alignment" : "LEFT"
+               } ],
+               "secondaryFields" : [ {
+                  "label" : "sLabel1",
+                  "data" : "sdata1",
+                  "displayRelatively" : false,
+                  "ignoreTimezone" : false,
+                  "key" : "skey1",
+                  "dataType" : "TEXT",
+                  "alignment" : "LEFT"
+               }, {
+                  "label" : "sLabel2",
+                  "data" : "sdata2",
+                  "displayRelatively" : false,
+                  "ignoreTimezone" : false,
+                  "key" : "skey2",
+                  "dataType" : "TEXT",
+                  "alignment" : "LEFT"
+               } ],
+               "barcodeDetails" : {
+                  "message" : "Boarding Message Automation2",
+                  "alternateText" : "Alternative Text message",
+                  "barcodeType" : "PDF417",
+                  "embeddedMessageType" : "HARDCODED_MESSAGE",
+                  "alternativeTextType" : "HARDCODED_MESSAGE",
+                  "embeddedFormat" : "UTF_8"
+               },
+               "transitType" : "AIR"
+            },
+            "backLayout" : {
+               "fields" : [ {
+                  "label" : "Contact-Us",
+                  "data" : "website: www.kony.com",
+                  "displayRelatively" : false,
+                  "ignoreTimezone" : false,
+                  "key" : "bkey1",
+                  "dataType" : "TEXT"
+               }, {
+                  "label" : "Mobile Number",
+                  "data" : "9.20E+11",
+                  "displayRelatively" : false,
+                  "ignoreTimezone" : false,
+                  "key" : "bkey2",
+                  "dataType" : "TEXT"
+               } ],
+               "enableAutoUpdates" : false
+            },
+            "passRelevance" : {
+               "ignoreTimezone" : false,
+               "maxDistance" : 10.0
+            },
+            "passRules" : {
+               "voided" : false,
+               "dateRestriction" : "PERMANENTLY_AVAILABLE"
+            },
+            "languageDetails" : {
+               "passLanguage" : "EN"
+            }
+         },
+         "passIntegrationConfig" : {
+            "passIssueNotificationDetails" : [ {
+               "channel" : "EMAIL",
+               "enabled" : true,
+               "messageContent" : "Pass Issue content Email  < a >href = '##Email Pass Link##' > click here < /a>",
+               "subject" : "Sending Boarding Pass Automation - Test case-01"
+            } ]
+         }
+      }
+   }, {
+      "name" : "eventPush5895",
+      "description" : "Creating an event for sending messages",
+      "eventType" : "EventForAll14",
+      "eventSms" : [ {
+         "smsName" : "qGPAPit",
+         "smsContent" : "Sending Push Message through Event with one Valid KSID and the KSID is ##KSID##"
+      } ],
+      "eventVoiceSms" : [ {
+         "smsName" : "rSGDYns",
+         "smsContent" : "Voice SMS Message"
+      } ],
+      "eventMails" : [ {
+         "mailName" : "lparGrU",
+         "mailSubject" : "Mail subject from event mail",
+         "mailContent" : "Sending Push Message through Event with one Valid KSID and the KSID is ##KSID##",
+         "contentType" : "text/html",
+         "senderMailId" : "kmstest@gmail.com",
+         "senderMailName" : "KMS Event Mail Sender"
+      } ],
+      "eventPushes" : [ {
+         "messageName" : "UEFgXaF",
+         "message" : "$message",
+         "richContent" : "%lt;h1%gt;Hello%lt;/h1%gt;",
+         "appId" : "AppForAll1",
+         "platformSpecificProps" : {
+            "iphone" : {
+               "badge" : 1,
+               "sound" : "sound.mp4",
+               "actionLocKey" : "actionkey",
+               "locKey" : "lockey",
+               "locArgs" : {
+                  "locArg" : [ "locArg" ]
+               },
+               "launchImage" : "launchImage",
+               "title" : "title",
+               "titleLocKey" : "titleLocKey",
+               "titleLocArgs" : {
+                  "titleLocArg" : [ "titleLocArg" ]
+               },
+               "customData" : {
+                  "key" : [ {
+                     "content" : "value",
+                     "name" : "cust"
+                  } ]
+               }
+            },
+            
+            "android" : {
+               "sound" : "d.wav",
+               "icon" : "flipkart",
+               "color" : "#ffeegg",
+               "clickAction" : "clickActKey",
+               "bodyLocKey" : "bodyLocKey",
+               "priority" : "HIGH",
+               "delayWhileIdle" : "TRUE",
+               "bodyLocArgs" : {
+                  "bodyLocArg" : [ "bodyLocArgs1", "bodyLocArgs2" ]
+               },
+               "titleLocKey" : "titleLocKey",
+               "titleLocArgs" : {
+                  "titleLocArg" : [ "titleLocArgs" ]
+               },
+               "key" : [ {
+                  "name" : "gcmKey1",
+                  "value" : "gcmValue1"
+               }, {
+                  "name" : "gcmKey2",
+                  "value" : "gcmValue2"
+               } ]
+            },
+            "jpush" : {
+               "key" : [ {
+                  "name" : "title",
+                  "value" : "Message Title Comes"
+               }, {
+                  "name" : "jPushKey1",
+                  "value" : "jPushValue1"
+               }, {
+                  "name" : "jPushKey2",
+                  "value" : "jPushValue2"
+               } ]
+            },
+            "web" : {
+               "icon" : "flipkart",
+               "clickAction" : "clickActKey",
+               "bodyLocArgs" : {
+                  "bodyLocArg" : [ "bodyLocArgs1", "bodyLocArgs2" ]
+               },
+               "titleLocKey" : "titleLocKey",
+               "titleLocArgs" : {
+                  "titleLocArg" : [ "titleLocArgs" ]
+               },
+               "key" : [ {
+                  "name" : "fcmKey1",
+                  "value" : "fcmValue1"
+               } ]
+            },
+            "windows" : {
+               "notificationType" : "TILE",
+               "title" : "New Message",
+               "badge" : 3,
+               "imagePath" : "http://background.images.com/background"
+            },
+            "wns" : {
+               "notificationType" : "TOAST",
+               "text1" : "Message Title Comes",
+               "text2" : "Body here for all messages",
+               "screenName" : "screen1.xaml",
+               "params" : {
+                  "key" : [ {
+                     "name" : "wnsKey1",
+                     "value" : "wnsValue1"
+                  }, {
+                     "name" : "wnsKey2",
+                     "value" : "wnsValue2"
+                  } ]
+               }
+            }
+         }
+      } ]
+   } ]
+}
+		
