@@ -61,7 +61,7 @@ function syncQuotes(serverQuotes) {
 
     quotes = [...localQuotes, ...newQuotes];
     saveQuotesToLocalStorage();
-    notifyUser("Quotes synced with the server!", "success");
+    notifyUser("Quotes synced with server!"); 
 }
 
 // Notify user with UI notifications
