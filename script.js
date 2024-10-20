@@ -28,9 +28,12 @@ function addQuote() {
         // Clear input fields after submission
         document.getElementById("newQuoteText").value = "";
         document.getElementById("newQuoteCategory").value = "";
-        
+
         // Notify the user that the quote has been added
         alert("Quote added successfully!");
+
+        // Show the new quote immediately after adding it
+        showRandomQuote();
     } else {
         alert("Please enter both a quote and a category.");
     }
