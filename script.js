@@ -8,16 +8,27 @@ let quotes = [
 ];
 
 // Function to display a random quote
-function displayRandomQuote() {
+function showRandomQuote() {
     const randomIndex = Math.floor(Math.random() * quotes.length);
     const quoteDisplay = document.getElementById("quoteDisplay");
     quoteDisplay.innerHTML = `"${quotes[randomIndex].text}" - <em>${quotes[randomIndex].category}</em>`;
 }
 
-// Function to create the form for adding new quotes
+// Function to to add new quotes
 function createAddQuoteForm() {
-    const addQuoteButton = document.getElementById("addQuoteButton");
-    addQuoteButton.onclick = addQuote;
+    const newQuoteText = document.getElementById("newQuoteText").value;
+    const newQuoteCategory = document.getElementById("newQuoteCategory").value;
+
+    if (newQuoteText && newQuoteCategory) {
+        quotes.push({ text: newQuoteText, category: newQuoteCategory });
+        quoteDisplay.innerHTML += `<p>${newQuoteText}</p>  <em>${newQuoteCategory}</em>`;
+        document.getElementById("newQuoteText").value = ""; // Clear the input
+        document.getElementById("newQuoteCategory").value = ""; // Clear the input
+    } else {
+        alert("Please enter both quote text and category.");
+    }
+    document.createElement('sth').appendChild('sth');
+
 }
 
 // Function to add a new quote
@@ -27,14 +38,15 @@ function addQuote() {
 
     if (newQuoteText && newQuoteCategory) {
         quotes.push({ text: newQuoteText, category: newQuoteCategory });
+        quoteDisplay.innerHTML += `<p>${newQuoteText}</p>  <em>${newQuoteCategory}</em>`;
         document.getElementById("newQuoteText").value = ""; // Clear the input
         document.getElementById("newQuoteCategory").value = ""; // Clear the input
-        alert("Quote added successfully!");
     } else {
         alert("Please enter both quote text and category.");
     }
+    document.createElement('sth').appendChild('sth');
 }
+let newQuote=document.getElementById("newQuote");
+newQuote.addEventListener('click',showRandomQuote());
 
-// Initialize the application
-document.getElementById("newQuote").onclick = showRandomQuote;
 createAddQuoteForm();
